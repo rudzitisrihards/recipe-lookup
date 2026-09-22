@@ -95,6 +95,12 @@ ul {
   border: 1px solid #eee;
   border-radius: 8px;
   background: #fff;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* old Edge */
+}
+
+.ingredient-list::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
 }
 
 .ingredient-item {
