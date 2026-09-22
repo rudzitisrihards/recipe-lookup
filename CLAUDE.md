@@ -5,11 +5,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## What this is
 
 A static, read-only recipe lookup tool for a two-person household: search/select
-ingredients, see which recipes use any of them (OR matching), tap through to a
+ingredients, see which recipes use all of them (AND matching), tap through to a
 recipe's photo + ingredient list. No backend, no accounts, no state persistence.
 Full requirements and rationale live in `recipe-app-brief.md` — read it before
 making product decisions; it explicitly lists what's out of scope (pantry
-tracking, cooking instructions, auth, AND-based matching) and why several
+tracking, cooking instructions, auth) and why several
 implementation choices were made (e.g. `visualViewport` sizing, modal-as-overlay
 not route).
 

@@ -21,6 +21,21 @@
     return `photos/${id}.jpg`;
   }
 
+  // Fade the ingredient list's scrollbar in while actively scrolling and
+  // back out shortly after it stops (same look on mobile and desktop).
+  let scrollHideTimer = null;
+  ingredientListEl.addEventListener(
+    "scroll",
+    () => {
+      ingredientListEl.classList.add("scrolling");
+      clearTimeout(scrollHideTimer);
+      scrollHideTimer = setTimeout(() => {
+        ingredientListEl.classList.remove("scrolling");
+      }, 800);
+    },
+    { passive: true }
+  );
+
   function deriveFlatIngredients(recipeList) {
     const set = new Set();
     for (const recipe of recipeList) {
@@ -34,7 +49,7 @@
   function getMatches() {
     if (selectedIngredients.size === 0) return [];
     return recipes.filter((recipe) =>
-      recipe.ingredients.some((ing) => selectedIngredients.has(ing))
+      Array.from(selectedIngredients).every((ing) => recipe.ingredients.includes(ing))
     );
   }
 
@@ -74,43 +89,55 @@
 
   function renderResults() {
     const matches = getMatches();
+    // Desktop cards: browse all recipes until a selection narrows them.
+    // Mobile chips: stay empty until a selection is made (unchanged).
+    const cardList = selectedIngredients.size === 0 ? recipes : matches;
+    const chipList = matches;
 
     resultsCardsEl.innerHTML = "";
     resultsChipsEl.innerHTML = "";
 
-    if (matches.length === 0) {
-      const emptyMsg =
-        selectedIngredients.size === 0
-          ? "Select ingredients to see matching recipes."
-          : "No recipes match the selected ingredients.";
-
+    if (cardList.length === 0) {
       const cardEmpty = document.createElement("p");
       cardEmpty.className = "results-empty";
-      cardEmpty.textContent = emptyMsg;
+      cardEmpty.textContent = "No recipes match the selected ingredients.";
       resultsCardsEl.appendChild(cardEmpty);
-      return;
+    } else {
+      for (const recipe of cardList) {
+        const card = document.createElement("button");
+        card.type = "button";
+        card.className = "recipe-card";
+        card.innerHTML = `
+          <img class="recipe-card-photo" src="${photoPath(recipe.id)}" alt="" loading="lazy" />
+          <div class="recipe-card-body">
+            <p class="recipe-card-name">${escapeHtml(recipe.name)}</p>
+            <p class="recipe-card-count">${recipe.ingredients.length} ingredient${recipe.ingredients.length === 1 ? "" : "s"}</p>
+          </div>
+        `;
+        card.addEventListener("click", () => openModal(recipe));
+        resultsCardsEl.appendChild(card);
+      }
     }
 
-    for (const recipe of matches) {
-      const card = document.createElement("button");
-      card.type = "button";
-      card.className = "recipe-card";
-      card.innerHTML = `
-        <img class="recipe-card-photo" src="${photoPath(recipe.id)}" alt="" loading="lazy" />
-        <div class="recipe-card-body">
-          <p class="recipe-card-name">${escapeHtml(recipe.name)}</p>
-          <p class="recipe-card-count">${recipe.ingredients.length} ingredient${recipe.ingredients.length === 1 ? "" : "s"}</p>
-        </div>
-      `;
-      card.addEventListener("click", () => openModal(recipe));
-      resultsCardsEl.appendChild(card);
+    if (chipList.length === 0) {
+      const emptyMsg =
+        selectedIngredients.size === 0
+          ? "select ingredients to see recipes"
+          : "No recipes match the selected ingredients.";
 
-      const chip = document.createElement("button");
-      chip.type = "button";
-      chip.className = "result-chip";
-      chip.textContent = recipe.name;
-      chip.addEventListener("click", () => openModal(recipe));
-      resultsChipsEl.appendChild(chip);
+      const chipEmpty = document.createElement("p");
+      chipEmpty.className = "results-empty";
+      chipEmpty.textContent = emptyMsg;
+      resultsChipsEl.appendChild(chipEmpty);
+    } else {
+      for (const recipe of chipList) {
+        const chip = document.createElement("button");
+        chip.type = "button";
+        chip.className = "result-chip";
+        chip.textContent = recipe.name;
+        chip.addEventListener("click", () => openModal(recipe));
+        resultsChipsEl.appendChild(chip);
+      }
     }
   }
 

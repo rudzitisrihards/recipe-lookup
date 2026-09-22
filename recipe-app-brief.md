@@ -9,8 +9,7 @@ buying. No accounts, no backend, no state tracking — this is a read-only
 lookup tool over a fixed set of recipes.
 
 Explicitly out of scope, do not build: pantry/inventory tracking, ingredient
-"owned/needed" status, cooking instructions, user accounts or auth, AND-based
-ingredient matching (only OR matching is needed).
+"owned/needed" status, cooking instructions, user accounts or auth.
 
 ## Tech constraints
 
@@ -75,8 +74,10 @@ Two-column split-screen:
   below).
 - **Right column**: matching recipe results as cards — square photo, recipe
   name, and ingredient count (e.g. "5 ingredients"). Updates live as
-  selections change. Clicking a card opens the recipe detail modal (see
-  "Recipe detail modal").
+  selections change. With no ingredients selected, shows **all** recipes
+  (browse mode) rather than an empty state — desktop users can browse the
+  full recipe set without selecting anything. Clicking a card opens the
+  recipe detail modal (see "Recipe detail modal").
 
 ### Mobile (narrow viewport, e.g. iPhone widths)
 
@@ -87,19 +88,20 @@ Stacked, flexible-height sections, not two independent scrolling columns:
 - **Below the input**: filtered ingredient list, scrollable within the
   remaining space.
 - **Bottom**: results section, pinned to the bottom, showing matching
-  recipes as **one-line chips** (name only, no photo). This section has
-  flexible height that grows upward as match count increases (typically
-  0–3 chips, max ~10) — it should never dominate the screen given the low
-  expected match counts. Tapping a chip opens the recipe detail modal.
+  recipes as **one-line chips** (name only, no photo). Empty until at
+  least one ingredient is selected — unlike desktop, there is no browse-all
+  mode on mobile. This section has flexible height that grows upward as
+  match count increases (typically 0–3 chips, max ~10) — it should never
+  dominate the screen given the low expected match counts. Tapping a chip
+  opens the recipe detail modal.
 
 ## Ingredient selection
 
 - **Multi-select**: tapping/clicking an ingredient selects it; selected
   ingredients are visually distinguished (e.g. highlighted state in the
   list). Tapping again deselects.
-- **Matching logic**: OR across all selected ingredients — a recipe matches
-  if it contains *any* currently selected ingredient. Do not implement AND
-  matching.
+- **Matching logic**: AND across all selected ingredients — a recipe matches
+  only if it contains *every* currently selected ingredient.
 - **Search**: a text input at the top of the ingredient section. Live
   filter on every keystroke (no debounce needed at this data scale) —
   filters the ingredient list to items whose text **contains** the search
@@ -199,7 +201,7 @@ explicitly:
 ## Build sequencing preference
 
 Build and verify the layout and interaction logic first using placeholder
-photos and a small set of sample recipes (enough to test multi-select, OR
+photos and a small set of sample recipes (enough to test multi-select, AND
 matching, search filtering, and the modal) before real recipe data and
 photos are finalized. Real content is a drop-in replacement at the end,
 not a dependency for getting the app working end to end.

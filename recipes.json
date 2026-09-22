@@ -1,27 +1,77 @@
 [
   {
-    "id": "chicken-curry",
-    "name": "Chicken Curry",
-    "ingredients": ["chicken thighs", "onion", "garlic", "coconut milk", "curry powder", "rice"]
+    "id": "cepti-kartupeļi-ar-cīsiņiem",
+    "name": "Cepti kartupeļi ar cīsiņiem",
+    "ingredients": ["kartupeļi", "cīsiņi", "sīpoli"]
   },
   {
-    "id": "veggie-stir-fry",
-    "name": "Veggie Stir Fry",
-    "ingredients": ["broccoli", "carrot", "garlic", "soy sauce", "ginger", "rice"]
+    "id": "vārīti-kartupeļi-ar-cīsiņiem-un-štovētiem-kāpostiem",
+    "name": "Vārīti kartupeļi ar cīsiņiem un štovētiem kāpostiem",
+    "ingredients": ["kartupeļi", "cīsiņi", "štovēti kāposti"]
   },
   {
-    "id": "tomato-pasta",
-    "name": "Tomato Pasta",
-    "ingredients": ["pasta", "tomato", "garlic", "onion", "basil", "olive oil"]
+    "id": "cepti-kartupeļi-ar-maltās-gaļas-mērci",
+    "name": "Cepti kartupeļi ar maltās gaļas mērci",
+    "ingredients": ["kartupeļi", "maltā gaļa", "sīpoli", "piens", "milti"]
   },
   {
-    "id": "beef-tacos",
-    "name": "Beef Tacos",
-    "ingredients": ["ground beef", "onion", "tortillas", "cheddar cheese", "tomato", "lettuce"]
+    "id": "griķi-ar-maltās-gaļas-mērci",
+    "name": "Griķi ar maltās gaļas mērci",
+    "ingredients": ["griķi", "maltā gaļa", "sīpoli", "piens", "milti"]
   },
   {
-    "id": "greek-salad",
-    "name": "Greek Salad",
-    "ingredients": ["tomato", "cucumber", "feta cheese", "olives", "olive oil", "red onion"]
+    "id": "makaroni-ar-maltās-gaļas-mērci",
+    "name": "Makaroni ar maltās gaļas mērci",
+    "ingredients": ["makaroni", "maltā gaļa", "sīpoli", "piens", "milti"]
+  },
+  {
+    "id": "makaroni-ar-malto-gaļu-un-sieru",
+    "name": "Makaroni ar malto gaļu un sieru",
+    "ingredients": ["makaroni", "maltā gaļa", "siers"]
+  },
+  {
+    "id": "rīsi-ar-vistu",
+    "name": "Rīsi ar vistu",
+    "ingredients": ["rīsi", "vistas fileja", "sīpoli", "teriyaki mērce", "sojas mērce"]
+  },
+  {
+    "id": "gurķu-un-tomātu-salāti",
+    "name": "Gurķu un tomātu salāti",
+    "ingredients": ["gurķi", "tomāti"]
+  },
+  {
+    "id": "frikadeļu-zupa",
+    "name": "Frikadeļu zupa",
+    "ingredients": ["kartupeļi", "burkāni", "sīpoli", "maltā gaļa", "buljona kubiki"]
+  },
+  {
+    "id": "tortiljas-ar-vistu",
+    "name": "Tortiljas ar vistu",
+    "ingredients": ["vistas fileja", "tortiljas", "tomāti", "sīpoli", "paprika"]
+  },
+  {
+    "id": "vistas-stir-fry",
+    "name": "Vistas stir-fry",
+    "ingredients": ["vistas fileja", "paprika", "sīpoli", "burkāni", "cukini"]
+  },
+  {
+    "id": "biešu-zupa",
+    "name": "Biešu zupa",
+    "ingredients": ["kartupeļi", "burkāni", "bietes", "liellopa gaļa", "buljona kubiki"]
+  },
+  {
+    "id": "aukstā-zupa",
+    "name": "Aukstā zupa",
+    "ingredients": ["bietes", "kefīrs", "gurķi", "loki", "dilles"]
+  },
+  {
+    "id": "soļanka",
+    "name": "Soļanka",
+    "ingredients": ["kartupeļi", "burkāni", "sīpoli", "cīsiņi", "žāvēta gaļa", "tomātu pasta", "buljona kubiki", "marinēti gurķi"]
+  },
+  {
+    "id": "pupiņu-zupa",
+    "name": "Pupiņu zupa",
+    "ingredients": ["sīpoli", "cīsiņi", "tomāti", "pupiņas", "kartupeļi", "burkāni", "buljona kubiki"]
   }
 ]
