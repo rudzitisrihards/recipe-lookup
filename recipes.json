@@ -1,0 +1,27 @@
+[
+  {
+    "id": "chicken-curry",
+    "name": "Chicken Curry",
+    "ingredients": ["chicken thighs", "onion", "garlic", "coconut milk", "curry powder", "rice"]
+  },
+  {
+    "id": "veggie-stir-fry",
+    "name": "Veggie Stir Fry",
+    "ingredients": ["broccoli", "carrot", "garlic", "soy sauce", "ginger", "rice"]
+  },
+  {
+    "id": "tomato-pasta",
+    "name": "Tomato Pasta",
+    "ingredients": ["pasta", "tomato", "garlic", "onion", "basil", "olive oil"]
+  },
+  {
+    "id": "beef-tacos",
+    "name": "Beef Tacos",
+    "ingredients": ["ground beef", "onion", "tortillas", "cheddar cheese", "tomato", "lettuce"]
+  },
+  {
+    "id": "greek-salad",
+    "name": "Greek Salad",
+    "ingredients": ["tomato", "cucumber", "feta cheese", "olives", "olive oil", "red onion"]
+  }
+]
