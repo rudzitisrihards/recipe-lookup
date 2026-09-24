@@ -2,7 +2,7 @@
 
 A static, read-only recipe finder for deciding whether a grocery-store
 discount is worth buying: pick one or more ingredients and see which recipes
-use any of them. No accounts, no backend, no build step.
+use all of them. No accounts, no backend, no build step.
 
 Full requirements and design rationale are in [`recipe-app-brief.md`](recipe-app-brief.md).
 
@@ -40,9 +40,8 @@ Drop a square JPEG at `photos/<recipe-id>.jpg` (roughly 1000×1000px,
 ~80–85% quality). The filename must match the recipe's `id` exactly. No code
 changes needed.
 
-The repo currently ships placeholder photos (a distinct flat color + label
-per recipe) so each card/modal can be visually verified before real photos
-are available.
+The current photos are temporary stand-ins until our own photos of each dish
+replace them.
 
 ## Deployment
 

@@ -22,7 +22,7 @@ evidently different products such as cucumbers and pickles.
 - cīsiņi
 - štovēti kāposti
 
-## Cepti kartupeļi ar maltās gaļas mērci
+## Vārīti kartupeļi ar maltās gaļas mērci
 
 - kartupeļi
 - maltā gaļa
@@ -124,5 +124,4 @@ evidently different products such as cucumbers and pickles.
 - pupiņas
 - kartupeļi
 - burkāni
-- sīpoli
 - buljona kubiki

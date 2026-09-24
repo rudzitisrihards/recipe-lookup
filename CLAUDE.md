@@ -60,10 +60,10 @@ for the full schema and scale assumptions (~10 recipes, ~50 ingredients max).
 
 ### Photos
 
-`photos/<id>.jpg`, square, ~1000×1000. Current photos are generated
-placeholders (distinct flat color + label per recipe, via a one-off PIL
-script, not checked into the repo) standing in until real photos are dropped
-in — that's a content-only swap, no code changes required.
+`photos/<id>.jpg`, square, ~1000×1000. Current photos are temporary
+stand-ins; the user will replace them manually with their own photos of each
+dish — a content-only swap, no code changes required. Renaming a recipe's `id`
+means renaming its photo file to match.
 
 ## Deployment
 
