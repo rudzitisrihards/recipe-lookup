@@ -64,7 +64,7 @@
     if (filtered.length === 0) {
       const empty = document.createElement("li");
       empty.className = "ingredient-empty";
-      empty.textContent = "No matching ingredients.";
+      empty.textContent = "Nav atbilstošu sastāvdaļu.";
       ingredientListEl.appendChild(empty);
       return;
     }
@@ -100,7 +100,7 @@
     if (cardList.length === 0) {
       const cardEmpty = document.createElement("p");
       cardEmpty.className = "results-empty";
-      cardEmpty.textContent = "No recipes match the selected ingredients.";
+      cardEmpty.textContent = "Neviena recepte neatbilst šīm sastāvdaļām.";
       resultsCardsEl.appendChild(cardEmpty);
     } else {
       for (const recipe of cardList) {
@@ -111,7 +111,7 @@
           <img class="recipe-card-photo" src="${photoPath(recipe.id)}" alt="" loading="lazy" />
           <div class="recipe-card-body">
             <p class="recipe-card-name">${escapeHtml(recipe.name)}</p>
-            <p class="recipe-card-count">${recipe.ingredients.length} ingredient${recipe.ingredients.length === 1 ? "" : "s"}</p>
+            <p class="recipe-card-count">${ingredientCountLabel(recipe.ingredients.length)}</p>
           </div>
         `;
         card.addEventListener("click", () => openModal(recipe));
@@ -122,8 +122,8 @@
     if (chipList.length === 0) {
       const emptyMsg =
         selectedIngredients.size === 0
-          ? "select ingredients to see recipes"
-          : "No recipes match the selected ingredients.";
+          ? "izvēlies sastāvdaļas, lai redzētu receptes"
+          : "Neviena recepte neatbilst šīm sastāvdaļām.";
 
       const chipEmpty = document.createElement("p");
       chipEmpty.className = "results-empty";
@@ -139,6 +139,12 @@
         resultsChipsEl.appendChild(chip);
       }
     }
+  }
+
+  // Latvian: singular after numbers ending in 1 (but not 11), plural otherwise.
+  function ingredientCountLabel(n) {
+    const singular = n % 10 === 1 && n % 100 !== 11;
+    return `${n} ${singular ? "sastāvdaļa" : "sastāvdaļas"}`;
   }
 
   function escapeHtml(str) {
@@ -236,7 +242,7 @@
       renderResults();
     })
     .catch((err) => {
-      ingredientListEl.innerHTML = `<li class="ingredient-empty">Failed to load recipes.json</li>`;
+      ingredientListEl.innerHTML = `<li class="ingredient-empty">Nevarēja ielādēt recipes.json</li>`;
       console.error(err);
     });
 })();
