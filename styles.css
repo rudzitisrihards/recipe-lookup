@@ -31,7 +31,10 @@ ul {
   height: 100dvh;
   height: var(--app-vh, 100dvh);
   overflow: hidden;
-  padding-top: env(safe-area-inset-top);
+  /* In home-screen (standalone) mode on iOS the status bar's blur extends a
+     little below the safe-area inset and fades over the search row, so add
+     extra clearance — only when there is an inset (0 in regular Safari). */
+  padding-top: calc(env(safe-area-inset-top) + min(env(safe-area-inset-top), 16px));
   padding-left: env(safe-area-inset-left);
   padding-right: env(safe-area-inset-right);
 }
