@@ -58,6 +58,25 @@ never a stored field. There is no `photo` field and no ingredients-list file;
 both must be derivable from `recipes.json` alone. See `recipe-app-brief.md`
 for the full schema and scale assumptions (~10 recipes, ~50 ingredients max).
 
+### `recipes-source.md` ↔ `recipes.json`
+
+`recipes-source.md` is the human-edited source of truth; the user adds and
+edits recipes there by hand and asks Claude to implement them. The two files
+must always describe the same recipes, in the same order, with identical names
+and ingredient lists:
+
+- When the user edits `recipes-source.md`, regenerate the affected entries in
+  `recipes.json` (id derived from the heading per the rules at the top of
+  that file).
+- When any recipe change is requested directly (rename, add/remove
+  ingredient, new recipe), apply it to **both** files in the same change.
+- Renaming a recipe changes its id, so also `git mv` its photo to match.
+- A new recipe has no photo yet; flag which `photos/<id>.jpg` files are
+  missing so the user can add them.
+- Keep ingredient wording consistent with existing ingredients (see the
+  dedup note in `recipes-source.md`) and point out near-duplicates rather
+  than silently merging them.
+
 ### Photos
 
 `photos/<id>.jpg`, square, ~1000×1000. Current photos are temporary

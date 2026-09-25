@@ -64,6 +64,8 @@ evidently different products such as cucumbers and pickles.
 
 - gurķi
 - tomāti
+- loki
+- dilles
 
 ## Frikadeļu zupa
 
